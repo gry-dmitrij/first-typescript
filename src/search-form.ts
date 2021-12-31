@@ -1,6 +1,57 @@
 import { renderBlock } from './lib.js'
 import {DateTime} from '/lib/luxon/es6/luxon.js'
 
+export function listeners() {
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      find()
+    })
+  }
+}
+
+interface SearchFormData {
+  city: string,
+  checkin: DateTime,
+  checkout: DateTime,
+  maxPrice: number
+}
+
+// функция-обработчик формы
+function find(): void {
+  const city = (document.getElementById('city') as HTMLInputElement)?.value;
+  const checkin = (document.getElementById('check-in-date') as HTMLInputElement)?.value;
+  const checkout = (document.getElementById('check-out-date') as HTMLInputElement)?.value;
+  const maxPrice = +(document.getElementById('max-price') as HTMLInputElement)?.value;
+  const data = {
+    city,
+    checkin,
+    checkout,
+    maxPrice
+  }
+  search(data)
+}
+
+interface Place {
+
+}
+
+function search(data: SearchFormData, cb?: (place: Error | Place[]) => Error | Place[]): void {
+  console.log(data)
+  if (typeof cb !== 'function') {
+    cb = () => null
+  }
+  setTimeout(() => {
+    const rand = Math.random();
+    if (rand < 0.5) {
+      cb(new Error('Ошибка'))
+    } else {
+      cb([])
+    }
+  }, 1000)
+}
+
 export function renderSearchFormBlock (arrivalDate?: Date, departureDate?: Date) {
   const arrivalDateTime = !arrivalDate ? DateTime.now().plus({day: 1}) : DateTime.fromJSDate(arrivalDate);
   const departureDateTime = !departureDate ?
