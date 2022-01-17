@@ -3,6 +3,7 @@ import { renderSearchStubBlock } from './search-results.js'
 import { renderUserBlock } from './user.js'
 import { renderToast } from './lib.js'
 import { getTodosByCount} from './todo.js';
+import {debounce} from 'lodash.debounce';
 
 window.addEventListener('DOMContentLoaded', () => {
   renderUserBlock('Wade Warren','/img/avatar.png', 1 )
