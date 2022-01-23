@@ -5,13 +5,23 @@
     "module": "es2015",
     "moduleResolution": "node",
     "allowJs": true,
+//    "noImplicitAny": true, - не получилось включить из-за велосипеда с библиотекой luxon
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
 //    "esModuleInterop": true,
 //    "allowSyntheticDefaultImports": true,
 //    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
       "/lib/dayjs/index.js": ["node_modules/dayjs/"],
-      "/lib/luxon/es6/luxon.js": ["node_modules/luxon"],
+      "/lib/luxon/es6/luxon.js": ["node_modules/luxon"]
     }
   },
 //  "files": [

@@ -39,15 +39,18 @@ interface Place {
 
 function search(data: SearchFormData, cb?: (place: Error | Place[]) => Error | Place[]): void {
   console.log(data)
-  if (typeof cb !== 'function') {
-    cb = () => null
+  let cb1;
+  if (cb == null) {
+    cb1 = (value) => value
+  } else {
+    cb1 = cb
   }
   setTimeout(() => {
     const rand = Math.random();
     if (rand < 0.5) {
-      cb(new Error('Ошибка'))
+      cb1(new Error('Ошибка'))
     } else {
-      cb([])
+      cb1([])
     }
   }, 1000)
 }
