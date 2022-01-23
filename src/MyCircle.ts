@@ -9,7 +9,7 @@ export interface Circle {
 export class MyCircle extends MyAreaPrimitive2D {
   private _circle: Circle;
 
-  constructor(x0:number, y0: number, radius) {
+  constructor(x0:number, y0: number, radius: number) {
     super(x0, y0);
     this._circle = {
       point: this.point,
